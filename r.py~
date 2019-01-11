@@ -261,6 +261,9 @@ def random_select(selected_row):
 	index = random.randint(0, list_len-1)
 	selected_group = row_list_tmp[index]
 	selected_dict = selected_group[0]
+	print(row_list_tmp)
+	print(selected_group)
+	print(selected_dict)
 	word = ''
 	signal = ''
 	for key, value in selected_dict.items():
