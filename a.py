@@ -129,6 +129,8 @@ def display_word():
 	w_s = r.random_select(get_selected_row(has_selected_list))
 	# lab_word['text'] = w_s[0]
 	g_word.set(w_s[0])
+	global g_signal
+	g_signal.set('未定义')
 
 
 def display_signal():
