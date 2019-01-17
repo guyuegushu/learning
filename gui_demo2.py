@@ -19,6 +19,7 @@ def makeform(root, fields):
       lab.pack(side=LEFT)
       ent.pack(side=RIGHT, expand=YES, fill=X)
       entries.append((field, ent))
+      print('111111111111111'+ent.get())
    return entries
 
 if __name__ == '__main__':
