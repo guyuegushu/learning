@@ -3,6 +3,7 @@ import random
 """
 1. 采用坐标方式,随机取出行\段,得出字符
 2. 添加其他字段选择方式, 浊音, 半浊音, 全选等
+3. 将平片假名合在一起, 加个按钮
 4. 添加重点词汇标记
 whole_word =[
             ({"a":"あ"},{"a":"ア"}),
@@ -257,17 +258,35 @@ whole_word = (
 )
 
 
-def random_select(selected_row, type_num):
+def random_select_group(selected_row):
     row_list_tmp = []
     for list_tmp in selected_row:
         row_list_tmp[len(row_list_tmp):len(row_list_tmp)] = list_tmp
     list_len = len(row_list_tmp)
     index = random.randint(0, list_len - 1)
     selected_group = row_list_tmp[index]
-    selected_dict = selected_group[int(type_num) - 1]
-    word = ''
+    return selected_group
+
+
+def random_select_signal(selected_group):
+    selected_dict = selected_group[0]
     signal = ''
     for key, value in selected_dict.items():
-        word = value
         signal = key
-    return word, signal
+    return signal
+
+
+def random_select_pin(selected_group):
+    selected_dict = selected_group[0]
+    word = ''
+    for key, value in selected_dict.items():
+        word = value
+    return word
+
+
+def random_select_pian(selected_group):
+    selected_dict = selected_group[1]
+    word = ''
+    for key, value in selected_dict.items():
+        word = value
+    return word

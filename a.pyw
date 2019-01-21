@@ -6,29 +6,25 @@ input_items = '字段名', '训练次数'
 input_list = []
 
 
-def create_form(base_window, d_start, d_word, d_signal):
+def create_form(base_window, d_start, d_pin, d_pian, d_signal):
     global input_list
     area = Frame(base_window)
     btn = Button(area, text='选择字段', command=(lambda: create_multi_select(base_window)))
+    btn_quit = Button(area, width=8, text='Quit', command=base_window.quit)
     area.pack(side=TOP, fill=X, padx=5, pady=5)
-    btn.pack(side=LEFT)
+    btn.pack(side=LEFT, padx=5, pady=5)
+    btn_quit.pack(side=RIGHT, padx=5, pady=5)
 
     area = Frame(base_window)
-    lab = Label(area, width=15, text='1.平假名 2.片假名')
-    ent = Entry(area)
-    area.pack(side=TOP, fill=X, padx=5, pady=5)
-    lab.pack(side=LEFT)
-    ent.pack(side=RIGHT, expand=YES, fill=X)
-    input_list.append({'type': ent})
-
-    area = Frame(base_window)
-    btn_start = Button(area, text='Start', command=d_start)
-    btn_word = Button(area, text='Word', command=d_word)
-    btn_answer = Button(area, text='Answer', command=d_signal)
+    btn_start = Button(area, text='随机', command=d_start)
+    btn_pin = Button(area, text='平假名', command=d_pin)
+    btn_pian = Button(area, text='片假名', command=d_pian)
+    btn_answer = Button(area, text='发音', command=d_signal)
     area.pack(side=TOP, fill=X, padx=5, pady=5)
     btn_start.pack(side=LEFT, padx=5, pady=5)
     btn_answer.pack(side=RIGHT, padx=5, pady=5)
-    btn_word.pack(side=RIGHT, padx=5, pady=5)
+    btn_pian.pack(side=RIGHT, padx=5, pady=5)
+    btn_pin.pack(side=RIGHT, padx=5, pady=5)
 
     area = Frame(base_window)
     lab_word = Label(area, width=10, textvariable=g_word)
@@ -36,11 +32,6 @@ def create_form(base_window, d_start, d_word, d_signal):
     area.pack(side=TOP, fill=X, padx=5, pady=5)
     lab_word.pack(side=LEFT)
     lab_signal.pack(side=RIGHT)
-
-    area = Frame(base_window)
-    btn_quit = Button(area, width=20, text='Quit', command=base_window.quit)
-    area.pack(side=TOP, padx=5, pady=5)
-    btn_quit.pack(side=TOP, padx=5, pady=5)
 
 
 has_selected_list = []
@@ -107,10 +98,6 @@ def get_selected_row(list_row):
     return selected_row
 
 
-def get_data():
-    return r.random_select(get_selected_row(has_selected_list))
-
-
 def init_w_s():
     global g_word, g_signal
     g_word = StringVar()
@@ -125,39 +112,40 @@ def default_w_s(m_hint):
     g_signal.set(m_hint)
 
 
-w_s = ()
+w_s_group = None
 g_word = None
 g_signal = None
 is_success_start = False
 
 
 def start_all():
-    global w_s, is_success_start
+    global w_s_group, is_success_start
     is_success_start = False
-    type_num = (input_list[0]['type']).get()
-    if type_num != '1' and type_num != '2':
-        messagebox.showinfo(title='input error', message='请输入正确的假名类型')
-        default_w_s('未定义')
+    selected_row = get_selected_row(has_selected_list)
+    if len(selected_row) != 0:
+        w_s_group = r.random_select_group(selected_row)
+        is_success_start = True
+        default_w_s('已定义')
     else:
-        selected_row = get_selected_row(has_selected_list)
-        if len(selected_row) != 0:
-            w_s = r.random_select(selected_row, type_num)
-            is_success_start = True
-            default_w_s('已定义')
-        else:
-            default_w_s('未定义')
+        default_w_s('未定义')
 
 
-def display_word():
+def display_pin():
     global g_word
     if is_success_start:
-        g_word.set(w_s[0])
+        g_word.set(r.random_select_pin(w_s_group)[0])
+
+
+def display_pian():
+    global g_word
+    if is_success_start:
+        g_word.set(r.random_select_pian(w_s_group)[0])
 
 
 def display_signal():
     global g_signal
     if is_success_start:
-        g_signal.set(w_s[1])
+        g_signal.set(r.random_select_signal(w_s_group))
 
 
 if __name__ == '__main__':
@@ -165,5 +153,5 @@ if __name__ == '__main__':
     init_w_s()
     if len(has_selected_list) == 0:
         default_select_list(len(r.whole_word))
-    create_form(t, start_all, display_word, display_signal)
+    create_form(t, start_all, display_pin, display_pian, display_signal)
     t.mainloop()
