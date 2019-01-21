@@ -119,10 +119,10 @@ def init_w_s():
     g_signal.set('未定义')
 
 
-def default_w_s():
+def default_w_s(m_hint):
     global g_word, g_signal
-    g_word.set('未定义')
-    g_signal.set('未定义')
+    g_word.set(m_hint)
+    g_signal.set(m_hint)
 
 
 w_s = ()
@@ -137,12 +137,15 @@ def start_all():
     type_num = (input_list[0]['type']).get()
     if type_num != '1' and type_num != '2':
         messagebox.showinfo(title='input error', message='请输入正确的假名类型')
+        default_w_s('未定义')
     else:
         selected_row = get_selected_row(has_selected_list)
         if len(selected_row) != 0:
             w_s = r.random_select(selected_row, type_num)
             is_success_start = True
-        default_w_s()
+            default_w_s('已定义')
+        else:
+            default_w_s('未定义')
 
 
 def display_word():
