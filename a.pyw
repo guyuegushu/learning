@@ -6,7 +6,7 @@ input_items = '字段名', '训练次数'
 input_list = []
 
 
-def create_form(base_window, d_word, d_signal):
+def create_form(base_window, d_start, d_word, d_signal):
     global input_list
     area = Frame(base_window)
     btn = Button(area, text='选择字段', command=(lambda: create_multi_select(base_window)))
@@ -22,11 +22,13 @@ def create_form(base_window, d_word, d_signal):
     input_list.append({'type': ent})
 
     area = Frame(base_window)
-    btn_start = Button(area, text='Start', command=d_word)
+    btn_start = Button(area, text='Start', command=d_start)
+    btn_word = Button(area, text='Word', command=d_word)
     btn_answer = Button(area, text='Answer', command=d_signal)
     area.pack(side=TOP, fill=X, padx=5, pady=5)
     btn_start.pack(side=LEFT, padx=5, pady=5)
     btn_answer.pack(side=RIGHT, padx=5, pady=5)
+    btn_word.pack(side=RIGHT, padx=5, pady=5)
 
     area = Frame(base_window)
     lab_word = Label(area, width=10, textvariable=g_word)
@@ -117,13 +119,21 @@ def init_w_s():
     g_signal.set('未定义')
 
 
+def default_w_s():
+    global g_word, g_signal
+    g_word.set('未定义')
+    g_signal.set('未定义')
+
+
 w_s = ()
 g_word = None
 g_signal = None
+is_success_start = False
 
 
-def display_word():
-    global w_s, g_word
+def start_all():
+    global w_s, is_success_start
+    is_success_start = False
     type_num = (input_list[0]['type']).get()
     if type_num != '1' and type_num != '2':
         messagebox.showinfo(title='input error', message='请输入正确的假名类型')
@@ -131,14 +141,20 @@ def display_word():
         selected_row = get_selected_row(has_selected_list)
         if len(selected_row) != 0:
             w_s = r.random_select(selected_row, type_num)
-            g_word.set(w_s[0])
-            global g_signal
-            g_signal.set('未定义')
+            is_success_start = True
+        default_w_s()
+
+
+def display_word():
+    global g_word
+    if is_success_start:
+        g_word.set(w_s[0])
 
 
 def display_signal():
     global g_signal
-    g_signal.set(w_s[1])
+    if is_success_start:
+        g_signal.set(w_s[1])
 
 
 if __name__ == '__main__':
@@ -146,5 +162,5 @@ if __name__ == '__main__':
     init_w_s()
     if len(has_selected_list) == 0:
         default_select_list(len(r.whole_word))
-    create_form(t, display_word, display_signal)
+    create_form(t, start_all, display_word, display_signal)
     t.mainloop()
