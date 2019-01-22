@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b9a613da-84b6-45f7-966c-3c847a0b1f86" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/a.pyw" beforeDir="false" afterPath="$PROJECT_DIR$/a.pyw" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/r.py" beforeDir="false" afterPath="$PROJECT_DIR$/r.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,21 +16,17 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/a.pyw">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="12" column="38" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
-              <folding>
-                <element signature="e#1461#1551#0" />
-                <element signature="e#1592#1738#0" />
-                <element signature="e#1783#4038#0" />
-                <element signature="e#4077#4238#0" />
-                <element signature="e#4138#4214#0" />
-                <element signature="e#4343#4464#0" />
-                <element signature="e#4603#4724#0" />
-                <element signature="e#5346#5438#0" />
-                <element signature="e#5473#5538#0" />
-                <element signature="e#5587#5674#0" />
-                <element signature="e#5708#5904#0" />
-              </folding>
+            <state relative-caret-position="300">
+              <caret line="113" column="23" selection-start-line="113" selection-start-column="7" selection-end-line="113" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/tkinter/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="264">
+              <caret line="2147" column="4" selection-start-line="2147" selection-start-column="4" selection-end-line="2147" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -38,7 +34,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/r.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-44">
+            <state relative-caret-position="6500">
               <caret line="260" column="18" selection-start-line="260" selection-start-column="18" selection-end-line="260" selection-end-column="18" />
             </state>
           </provider>
@@ -77,7 +73,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -89,6 +84,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -183,28 +179,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/r.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-44">
+        <state relative-caret-position="6500">
           <caret line="260" column="18" selection-start-line="260" selection-start-column="18" selection-end-line="260" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/tkinter/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="2147" column="4" selection-start-line="2147" selection-start-column="4" selection-end-line="2147" selection-end-column="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/a.pyw">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="12" column="38" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
-          <folding>
-            <element signature="e#1461#1551#0" />
-            <element signature="e#1592#1738#0" />
-            <element signature="e#1783#4038#0" />
-            <element signature="e#4077#4238#0" />
-            <element signature="e#4138#4214#0" />
-            <element signature="e#4343#4464#0" />
-            <element signature="e#4603#4724#0" />
-            <element signature="e#5346#5438#0" />
-            <element signature="e#5473#5538#0" />
-            <element signature="e#5587#5674#0" />
-            <element signature="e#5708#5904#0" />
-          </folding>
+        <state relative-caret-position="300">
+          <caret line="113" column="23" selection-start-line="113" selection-start-column="7" selection-end-line="113" selection-end-column="23" />
         </state>
       </provider>
     </entry>

@@ -51,41 +51,106 @@ def change_selected_state(index):
         has_selected_list[index] = 0
 
 
+is_multi_display = False
+is_multi_create = False
+cbtn_a = None
+cbtn_k = None
+cbtn_s = None
+cbtn_t = None
+cbtn_n = None
+cbtn_h = None
+cbtn_m = None
+cbtn_y = None
+cbtn_r = None
+cbtn_w = None
+cbtn_n2 = None
+cbtn_g = None
+cbtn_z = None
+cbtn_d = None
+cbtn_b = None
+cbtn_p = None
+cbtn_xxx = None
+
+
 def create_multi_select(base_window):
-    cbtn_a = Checkbutton(base_window, width=15, text='A行', command=lambda: change_selected_state(0))
-    cbtn_k = Checkbutton(base_window, width=15, text='K行', command=lambda: change_selected_state(1))
-    cbtn_s = Checkbutton(base_window, width=15, text='S行', command=lambda: change_selected_state(2))
-    cbtn_t = Checkbutton(base_window, width=15, text='T行', command=lambda: change_selected_state(3))
-    cbtn_n = Checkbutton(base_window, width=15, text='N行', command=lambda: change_selected_state(4))
-    cbtn_h = Checkbutton(base_window, width=15, text='H行', command=lambda: change_selected_state(5))
-    cbtn_m = Checkbutton(base_window, width=15, text='M行', command=lambda: change_selected_state(6))
-    cbtn_y = Checkbutton(base_window, width=15, text='Y行', command=lambda: change_selected_state(7))
-    cbtn_r = Checkbutton(base_window, width=15, text='R行', command=lambda: change_selected_state(8))
-    cbtn_w = Checkbutton(base_window, width=15, text='W行', command=lambda: change_selected_state(9))
-    cbtn_n2 = Checkbutton(base_window, width=15, text='N2行', command=lambda: change_selected_state(10))
-    cbtn_g = Checkbutton(base_window, width=15, text='G行', command=lambda: change_selected_state(11))
-    cbtn_z = Checkbutton(base_window, width=15, text='Z行', command=lambda: change_selected_state(12))
-    cbtn_d = Checkbutton(base_window, width=15, text='D行', command=lambda: change_selected_state(13))
-    cbtn_b = Checkbutton(base_window, width=15, text='B行', command=lambda: change_selected_state(14))
-    cbtn_p = Checkbutton(base_window, width=15, text='P行', command=lambda: change_selected_state(15))
-    cbtn_xxx = Checkbutton(base_window, width=15, text='XXX行', command=lambda: change_selected_state(16))
-    cbtn_a.pack(anchor=CENTER)
-    cbtn_k.pack(anchor=CENTER)
-    cbtn_s.pack(anchor=CENTER)
-    cbtn_t.pack(anchor=CENTER)
-    cbtn_n.pack(anchor=CENTER)
-    cbtn_h.pack(anchor=CENTER)
-    cbtn_m.pack(anchor=CENTER)
-    cbtn_y.pack(anchor=CENTER)
-    cbtn_r.pack(anchor=CENTER)
-    cbtn_w.pack(anchor=CENTER)
-    cbtn_n2.pack(anchor=CENTER)
-    cbtn_g.pack(anchor=CENTER)
-    cbtn_z.pack(anchor=CENTER)
-    cbtn_d.pack(anchor=CENTER)
-    cbtn_b.pack(anchor=CENTER)
-    cbtn_p.pack(anchor=CENTER)
-    cbtn_xxx.pack(anchor=CENTER)
+    global cbtn_a
+    global cbtn_k
+    global cbtn_s
+    global cbtn_t
+    global cbtn_n
+    global cbtn_h
+    global cbtn_m
+    global cbtn_y
+    global cbtn_r
+    global cbtn_w
+    global cbtn_n2
+    global cbtn_g
+    global cbtn_z
+    global cbtn_d
+    global cbtn_b
+    global cbtn_p
+    global cbtn_xxx
+    global is_multi_create
+    if is_multi_create:
+        pass
+    else:
+        cbtn_a = Checkbutton(base_window, width=15, text='A行', command=lambda: change_selected_state(0))
+        cbtn_k = Checkbutton(base_window, width=15, text='K行', command=lambda: change_selected_state(1))
+        cbtn_s = Checkbutton(base_window, width=15, text='S行', command=lambda: change_selected_state(2))
+        cbtn_t = Checkbutton(base_window, width=15, text='T行', command=lambda: change_selected_state(3))
+        cbtn_n = Checkbutton(base_window, width=15, text='N行', command=lambda: change_selected_state(4))
+        cbtn_h = Checkbutton(base_window, width=15, text='H行', command=lambda: change_selected_state(5))
+        cbtn_m = Checkbutton(base_window, width=15, text='M行', command=lambda: change_selected_state(6))
+        cbtn_y = Checkbutton(base_window, width=15, text='Y行', command=lambda: change_selected_state(7))
+        cbtn_r = Checkbutton(base_window, width=15, text='R行', command=lambda: change_selected_state(8))
+        cbtn_w = Checkbutton(base_window, width=15, text='W行', command=lambda: change_selected_state(9))
+        cbtn_n2 = Checkbutton(base_window, width=15, text='N2行', command=lambda: change_selected_state(10))
+        cbtn_g = Checkbutton(base_window, width=15, text='G行', command=lambda: change_selected_state(11))
+        cbtn_z = Checkbutton(base_window, width=15, text='Z行', command=lambda: change_selected_state(12))
+        cbtn_d = Checkbutton(base_window, width=15, text='D行', command=lambda: change_selected_state(13))
+        cbtn_b = Checkbutton(base_window, width=15, text='B行', command=lambda: change_selected_state(14))
+        cbtn_p = Checkbutton(base_window, width=15, text='P行', command=lambda: change_selected_state(15))
+        cbtn_xxx = Checkbutton(base_window, width=15, text='XXX行', command=lambda: change_selected_state(16))
+        is_multi_create = True
+    global is_multi_display
+    if is_multi_display:
+        cbtn_a.forget()
+        cbtn_k.forget()
+        cbtn_s.forget()
+        cbtn_t.forget()
+        cbtn_n.forget()
+        cbtn_h.forget()
+        cbtn_m.forget()
+        cbtn_y.forget()
+        cbtn_r.forget()
+        cbtn_w.forget()
+        cbtn_n2.forget()
+        cbtn_g.forget()
+        cbtn_z.forget()
+        cbtn_d.forget()
+        cbtn_b.forget()
+        cbtn_p.forget()
+        cbtn_xxx.forget()
+        is_multi_display = False
+    else:
+        is_multi_display = True
+        cbtn_a.pack(anchor=CENTER)
+        cbtn_k.pack(anchor=CENTER)
+        cbtn_s.pack(anchor=CENTER)
+        cbtn_t.pack(anchor=CENTER)
+        cbtn_n.pack(anchor=CENTER)
+        cbtn_h.pack(anchor=CENTER)
+        cbtn_m.pack(anchor=CENTER)
+        cbtn_y.pack(anchor=CENTER)
+        cbtn_r.pack(anchor=CENTER)
+        cbtn_w.pack(anchor=CENTER)
+        cbtn_n2.pack(anchor=CENTER)
+        cbtn_g.pack(anchor=CENTER)
+        cbtn_z.pack(anchor=CENTER)
+        cbtn_d.pack(anchor=CENTER)
+        cbtn_b.pack(anchor=CENTER)
+        cbtn_p.pack(anchor=CENTER)
+        cbtn_xxx.pack(anchor=CENTER)
 
 
 def get_selected_row(list_row):
