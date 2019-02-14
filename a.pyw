@@ -198,13 +198,13 @@ def start_all():
 def display_pin():
     global g_word
     if is_success_start:
-        g_word.set(r.random_select_pin(w_s_group)[0])
+        g_word.set(r.random_select_pin(w_s_group))
 
 
 def display_pian():
     global g_word
     if is_success_start:
-        g_word.set(r.random_select_pian(w_s_group)[0])
+        g_word.set(r.random_select_pian(w_s_group))
 
 
 def display_signal():
